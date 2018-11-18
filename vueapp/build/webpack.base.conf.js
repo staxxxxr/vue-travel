@@ -35,6 +35,8 @@ module.exports = {
     extensions: ['.js', '.vue', '.json'],
     alias: {
       '@': resolve('src'),
+      //自定义地址
+      'styles': resolve('src/assets/styles'),
     }
   },
   module: {
