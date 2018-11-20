@@ -3,86 +3,28 @@
     <div class="list" ref="wrapper">
         <div>
             <div class="area">
-            <div class="title border-topbottom">当前城市</div>
-            <div class="button-list">
-                <div class="button-wrapper">
-                    <div class="button">北京</div>
+                <div class="title border-topbottom">当前城市</div>
+                <div class="button-list">
+                    <div class="button-wrapper">
+                        <div class="button">上海</div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="area">
-            <div class="title border-topbottom">热门城市</div>
-            <div class="button-list">
-                <div class="button-wrapper">
-                    <div class="button">北京</div>
-                </div>
-                <div class="button-wrapper">
-                    <div class="button">北京</div>
-                </div>
-                <div class="button-wrapper">
-                    <div class="button">北京</div>
-                </div>
-                <div class="button-wrapper">
-                    <div class="button">北京</div>
-                </div>
-                <div class="button-wrapper">
-                    <div class="button">北京</div>
-                </div>
-                <div class="button-wrapper">
-                    <div class="button">北京</div>
-                </div>
-                <div class="button-wrapper">
-                    <div class="button">北京</div>
-                </div>
-                <div class="button-wrapper">
-                    <div class="button">北京</div>
+            <div class="area">
+                <div class="title border-topbottom">热门城市</div>
+                <div class="button-list">
+                    <div class="button-wrapper"  v-for="item of hot" :key="item.id" @click="handleCityClick(item.name)">
+                        <div class="button">{{item.name}}</div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="area">
-            <div class="title border-topbottom">A</div>
-            <div class="item-list">
-                <div class="item border-bottom">阿拉尔</div>
-                <div class="item border-bottom">阿拉尔</div>
-                <div class="item border-bottom">阿拉尔</div>
-                <div class="item border-bottom">阿拉尔</div>
-                <div class="item border-bottom">阿拉尔</div>
-                <div class="item border-bottom">阿拉尔</div>
+            <!-- 通过双重循环输出每个对象的key值，再依次循环每个对象的name -->
+            <div class="area" v-for="(item,key) of cities" :key="key" :ref="key">
+                <div class="title border-topbottom">{{key}}</div>
+                <div class="item-list" v-for="innerItem of item" :key="innerItem.id" @click="handleCityClick(innerItem.name)">
+                    <div class="item border-bottom">{{innerItem.name}}</div>
+                </div>
             </div>
-        </div>
-        <div class="area">
-            <div class="title border-topbottom">A</div>
-            <div class="item-list">
-                <div class="item border-bottom">阿拉尔</div>
-                <div class="item border-bottom">阿拉尔</div>
-                <div class="item border-bottom">阿拉尔</div>
-                <div class="item border-bottom">阿拉尔</div>
-                <div class="item border-bottom">阿拉尔</div>
-                <div class="item border-bottom">阿拉尔</div>
-            </div>
-        </div>
-        <div class="area">
-            <div class="title border-topbottom">A</div>
-            <div class="item-list">
-                <div class="item border-bottom">阿拉尔</div>
-                <div class="item border-bottom">阿拉尔</div>
-                <div class="item border-bottom">阿拉尔</div>
-                <div class="item border-bottom">阿拉尔</div>
-                <div class="item border-bottom">阿拉尔</div>
-                <div class="item border-bottom">阿拉尔</div>
-            </div>
-        </div>
-        <div class="area">
-            <div class="title border-topbottom">A</div>
-            <div class="item-list">
-                <div class="item border-bottom">阿拉尔</div>
-                <div class="item border-bottom">阿拉尔</div>
-                <div class="item border-bottom">阿拉尔</div>
-                <div class="item border-bottom">阿拉尔</div>
-                <div class="item border-bottom">阿拉尔</div>
-                <div class="item border-bottom">阿拉尔</div>
-            </div>
-        </div>
         </div>
     </div>
 </template>
@@ -92,7 +34,22 @@
 import Bscroll from 'better-scroll'
 export default {
   name: 'CityList',
-  // 挂载完成后执行
+  // 通过props接收city父组件的数据
+  props: {
+    hot: Array,
+    cities: Object,
+    letter: String
+  },
+  // 通过监听letter后执行scroll自动滚动
+  watch: {
+    letter () {
+      if (this.letter) {
+        const element = this.$refs[this.letter][0]
+        this.scroll.scrollToElement(element)
+      }
+    }
+  },
+  // 挂载完成后执行scroll插件
   mounted () {
     this.scroll = new Bscroll(this.$refs.wrapper)
   }
