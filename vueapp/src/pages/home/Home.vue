@@ -1,11 +1,12 @@
 <template>
   <div>
-    <!-- 组件渲染 -->
+    <!-- 子组件渲染 -->
     <home-header :city="city"></home-header>
     <home-swiper :list="swiperList"></home-swiper>
     <home-icons :list="iconList"></home-icons>
     <home-recommend :list="recommendList"></home-recommend>
     <home-weekend :list="weekendList"></home-weekend>
+    <router-view/>
   </div>
 </template>
 
