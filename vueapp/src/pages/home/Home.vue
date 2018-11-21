@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- 子组件渲染 -->
-    <home-header :city="city"></home-header>
+    <home-header></home-header>
     <home-swiper :list="swiperList"></home-swiper>
     <home-icons :list="iconList"></home-icons>
     <home-recommend :list="recommendList"></home-recommend>
@@ -23,6 +23,8 @@ import HomeRecommend from './components/Recommend'
 import HomeWeekend from './components/Weekend'
 // 引入axios
 import axios from 'axios'
+// 引入vuex的mapState方法
+import { mapState } from 'vuex'
 export default {
   name: 'Home',
   // 声明组件
@@ -35,23 +37,26 @@ export default {
   },
   data () {
     return {
-      city: '',
+      lastCity: '',
       swiperList: [],
       iconList: [],
       recommendList: [],
       weekendList: []
     }
   },
+  // 引用mapState把city映射到computed中后，可直接使用this.city
+  computed: {
+    ...mapState(['city'])
+  },
   methods: {
     getHomeInfo () {
-      axios.get('/api/index.json')
+      axios.get('/api/index.json?city=' + this.city)
         .then(this.getHomeInfoSucc)
     },
     getHomeInfoSucc (res) {
       res = res.data
       if (res.ret && res.data) {
         const data = res.data
-        this.city = data.city
         this.swiperList = data.swiperList
         this.iconList = data.iconList
         this.recommendList = data.recommendList
@@ -61,7 +66,15 @@ export default {
     }
   },
   mounted () {
+    this.lastCity = this.city
     this.getHomeInfo()
+  },
+  // 判断当前城市有没有改变，如果改变则重新加载axios
+  activated () {
+    if (this.lastCity !== this.city) {
+      this.lastCity = this.city
+      this.getHomeInfo()
+    }
   }
 }
 </script>

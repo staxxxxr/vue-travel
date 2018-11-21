@@ -6,7 +6,7 @@
                 <div class="title border-topbottom">当前城市</div>
                 <div class="button-list">
                     <div class="button-wrapper">
-                        <div class="button">上海</div>
+                        <div class="button">{{this.currentCity}}</div>
                     </div>
                 </div>
             </div>
@@ -32,6 +32,8 @@
 <script>
 // 引入better-scroll滚动插件
 import Bscroll from 'better-scroll'
+// 引入vuex的mapState，mapMutations方法
+import { mapState, mapMutations } from 'vuex'
 export default {
   name: 'CityList',
   // 通过props接收city父组件的数据
@@ -39,6 +41,21 @@ export default {
     hot: Array,
     cities: Object,
     letter: String
+  },
+  // 引用mapState把city映射到computed中后，可直接使用this.currentCity
+  computed: {
+    ...mapState({
+      currentCity: 'city'
+    })
+  },
+  // 引用mapMutations把changeCity方法映射到methods中后，可直接使用this.changeCity(city)
+  methods: {
+    handleCityClick (city) {
+    //   this.$store.commit('changeCity', city)
+      this.changeCity(city)
+      this.$router.push('/')
+    },
+    ...mapMutations(['changeCity'])
   },
   // 通过监听letter后执行scroll自动滚动
   watch: {

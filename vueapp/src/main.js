@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import store from './store/index.js' // vuex.js
 import VueAwesomeSwiper from 'vue-awesome-swiper' // 轮播图.js
 import fastClick from 'fastclick' // (npm安装fastClick插件)解决移动端300毫秒点击延迟
 import 'styles/reset.css' // 全局样式重置
@@ -16,5 +17,6 @@ Vue.use(VueAwesomeSwiper)
 new Vue({
   el: '#app',
   router,
+  store,
   render: h => h(App)
 })

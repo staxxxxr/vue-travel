@@ -46,6 +46,7 @@ export default {
         const data = res.data
         this.cities = data.cities
         this.hotCities = data.hotCities
+        console.log(res.data)
       }
     },
     handleLetterChange (letter) {
