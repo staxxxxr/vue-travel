@@ -5,7 +5,7 @@
       <!-- 显示主页路由 -->
       <router-view/>
     </keep-alive>
-    <div>底部菜单栏</div>
+    <div>底部</div>
   </div>
 </template>
 
