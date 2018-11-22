@@ -1,32 +1,43 @@
 <template>
   <div>
     <div class="banner" @click="handleBannerClick">
-      <img class="banner-img" src="http://img1.qunarzz.com/sight/p0/201404/23/04b92c99462687fa1ba45c1b5ba4ad77.jpg_600x330_bf9c4904.jpg">
+      <img class="banner-img" :src="bannerImg">
       <div class="banner-info">
-        <div class="banner-title">大连圣亚海洋世界(AAAA景区)</div>
+        <div class="banner-title">{{this.sightName}}</div>
         <div class="banner-number">
         <span class="iconfont banner-icon">&#xe692;</span>
-        39
+        {{this.bannerImgs.length}}
         </div>
       </div>
     </div>
-    <common-gallary :imgs="imgs" v-show="showGallary" @close="handleGallaryClose"></common-gallary>
+    <!-- 用fade-animation组件包裹common-gallary使动画生效 -->
+    <fade-animation>
+      <common-gallary :imgs="bannerImgs" v-show="showGallary" @close="handleGallaryClose"></common-gallary>
+    </fade-animation>
   </div>
 </template>
 
 <script>
 // 引入CommonGallary子组件
 import CommonGallary from 'common/gallary/Gallary'
+// 引入FadeAnimation子组件
+import FadeAnimation from 'common/fade/FadeAnimation'
 export default {
   name: 'DetailBanner',
+  // 接收detail组件传来的axios数据
+  props: {
+    sightName: String,
+    bannerImg: String,
+    bannerImgs: Array
+  },
   // 注册各个子组件
   components: {
-    CommonGallary
+    CommonGallary,
+    FadeAnimation
   },
   data () {
     return {
-      showGallary: false,
-      imgs: ['http://img5.dwstatic.com/lol/1811/406643058453/1542687861579.jpg', 'http://img.dwstatic.com/lol/1811/406726165909/1542770969996.jpg']
+      showGallary: false
     }
   },
   methods: {
