@@ -28,7 +28,8 @@ export default {
   props: {
     sightName: String,
     bannerImg: String,
-    bannerImgs: Array
+    bannerImgs: Array,
+    bannerList: Array
   },
   // 注册各个子组件
   components: {

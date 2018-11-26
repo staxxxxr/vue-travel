@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="weekend">
     <div class="title">周末去哪儿</div>
     <ul>
         <li class="item border-bottom"  v-for="item of list" :key="item.id">
@@ -26,6 +26,8 @@ export default {
 
 <style lang="stylus" scoped>
   @import '~styles/mixins.styl'
+  .weekend
+    margin-bottom: .86rem
   .title
     line-height: .8rem
     background: #eee

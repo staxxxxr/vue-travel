@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="city">
     <!-- 子组件渲染 -->
     <city-header></city-header>
     <city-search :cities="cities"></city-search>

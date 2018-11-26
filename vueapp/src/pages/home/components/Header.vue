@@ -1,7 +1,7 @@
 <template>
   <div class="header">
     <div class="header-left">
-      <div class="iconfont back-icon">&#xe625;</div>
+      <div class="iconfont back-icon">&#xe623;</div>
     </div>
     <div class="header-input">
       <span class="iconfont">&#xe632;</span>
@@ -40,7 +40,7 @@ export default {
       float: left
       .back-icon
         text-align: center
-        font-size: .4rem
+        font-size: .35rem
     .header-input
       flex: 1
       height: .64rem
