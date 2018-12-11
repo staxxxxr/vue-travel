@@ -201,8 +201,7 @@ export default {
 
 <style lang="stylus" scoped>
 @import '~styles/varibles.styl'
-.text-red
-  color: red
+
 .header
   position: relative
   overflow: hidden
@@ -220,7 +219,5 @@ export default {
     text-align: center
     font-size: 0.4rem
     color: #fff
-    .text-green
-      color: green
 
 </style>

@@ -18,6 +18,9 @@ export default {
 }
 </script>
 
-<style>
-
+<style lang="stylus">
+.text-red
+  color: #e33
+.text-green
+  color: #2c7
 </style>
