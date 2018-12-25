@@ -5,6 +5,8 @@ import City from '@/pages/city/City'
 import Detail from '@/pages/detail/Detail'
 import Music from '@/pages/music/Music'
 import User from '@/pages/user/User'
+import Login from '@/pages/user/components/Login'
+import Registe from '@/pages/user/components/Registe'
 
 Vue.use(Router)
 
@@ -28,7 +30,16 @@ export default new Router({
   }, {
     path: '/user',
     name: 'User',
-    component: User
+    component: User,
+    children: [{
+      path: '',
+      name: 'Registe',
+      component: Registe
+    }, {
+      path: '/Login',
+      name: 'Login',
+      component: Login
+    }]
   }],
   // 每次加载路由将屏幕位置自动回到顶部
   scrollBehavior (to, from, savedPosition) {

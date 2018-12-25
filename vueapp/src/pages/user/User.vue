@@ -1,7 +1,9 @@
 <template>
   <div>
-    <!-- 子组件渲染 -->
+    <!-- 头部子组件 -->
     <user-header></user-header>
+    <!-- 登录注册组件路由显示 -->
+    <router-view></router-view>
   </div>
 </template>
 

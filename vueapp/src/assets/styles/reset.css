@@ -23,3 +23,12 @@ html {overflow-x: hidden;height: 100%;font-size: 50px;-webkit-tap-highlight-colo
 body {font-family: Arial, "Microsoft Yahei", "Helvetica Neue", Helvetica, sans-serif;color: #333;font-size: .28em;line-height: 1;-webkit-text-size-adjust: none;}
 hr {height: .02rem;margin: .1rem 0;border: medium none;border-top: .02rem solid #cacaca;}
 a {color: #25a4bb;text-decoration: none;}
+/* element表单验证输入框 */
+.el-form-item__content {
+    margin-left: 0 !important;
+    text-align: center
+  }
+  /* element表单验证下方错误提示 */
+  .el-form-item__error{
+    left: 30% !important
+  }

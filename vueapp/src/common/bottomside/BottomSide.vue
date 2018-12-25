@@ -4,12 +4,12 @@
       <div class="title-container">
         <router-link to="/">
           <span class="iconfont">&#xe72f;</span>
-          <span class="bottom-side-title">旅游</span>
+          <span class="bottom-side-title">生活</span>
         </router-link>
       </div>
       <div class="title-container">
         <router-link to="/music">
-          <span class="iconfont">&#xe600;</span>
+          <span class="iconfont">&#xe612;</span>
           <span class="bottom-side-title">音乐</span>
         </router-link>
       </div>
